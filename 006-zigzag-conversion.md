@@ -10,7 +10,7 @@ def convert(self, s, numRows):
     if numRows == 1 or numRows > len(s): return s
     
     L = [''] * numRows
-    i, step = 0, 1
+    i, step = 0, -1
     for c in s:
         L[i] += c
         if i == 0 or i == numRows - 1:
