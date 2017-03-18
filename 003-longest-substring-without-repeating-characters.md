@@ -18,7 +18,11 @@ We move slow pointer when:
 
 Use a global max to memorize the longest substring. If it needs to return the string itself instead of the length, use a start and end pointer to return the substring.
 
-这种方式的优点是可以灵活地控制每个字符出现的次数（例如本题要求distinct，每个字符出现的次数就是1，如果要求2次3次都可以改），还可以打印出相应的子串（本题中只要依次打印出value = 1的key，就是满足要求的子串）。缺点是当需要移动 slow 指针时，必须要一个一个删除 map 中的 key （这里并不是真的删掉key，而是把其对应的 value 减到 0），直到删到重复的那个 key 为止。参考代码如下：
+这种方式的优点是可以灵活地控制每个字符出现的次数（例如本题要求distinct，每个字符出现的次数就是1，如果要求2次3次都可以改）
+
+我原以为这种方法有一个优点是可以打印出相应的子串（本题中没有要求，但是只要依次打印出value = 1 的 key，就是substring with distinct chars），但后来一想map中的次序是 not garantee的，所以这个优点是不存在的，打印子串还是得靠 fast - slow的部分。
+
+缺点是当需要移动 slow 指针时，必须要一个一个删除 map 中的 key （这里并不是真的删掉key，而是把其对应的 value 减到 0），直到删到重复的那个 key 为止。参考代码如下：
 
 ```python
 class Solution(object):
@@ -82,7 +86,7 @@ class Solution(object):
 
 ## 第二种方法是用 map 记录每个 char 最后出现的位置
 
-此时这个map代表的并不是distinct char，而是之前见过的 char。这里要想清楚，当存的value不一样时，整个map 的意义都变了。（另外，这时 distinct char 是 fast - slow 的区域）这种方法的优点是，当出现重复的时候，不需要一个一个地去删 key，只需要更新一下该字符最后出现的位置就可以了。这种思路下，移动慢指针的条件是：map 中有这个 char，而且这个 char 最后出现的位置比slow还大。参考代码如下：
+这种方式更好一些.此时这个map代表的并不是distinct char，而是之前见过的 char。这里要想清楚，当存的value不一样时，整个map 的意义都变了。（另外，这时 distinct char 是 fast - slow 的区域）这种方法的优点是，当出现重复的时候，不需要一个一个地去删 key，只需要更新一下该字符最后出现的位置就可以了。这种思路下，移动慢指针的条件是：map 中有这个 char，而且这个 char 最后出现的位置比slow还大。参考代码如下：
 
 ```python
 class Solution(object):
@@ -102,10 +106,6 @@ class Solution(object):
         
         return global_max
 ```
-
-
-
-
 
 
 
