@@ -1,0 +1,2 @@
+# snippets
+Code for fun
