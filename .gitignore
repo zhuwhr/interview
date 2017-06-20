@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# my stuff
+__pycache__
+.idea
+.vscode
+/gigo[0-9]?.py/
