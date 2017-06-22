@@ -16,7 +16,21 @@ def binSearch(a, target):
 
     return 'not finding'
 
+def binSearch_variant(a, target):
+    start = 0
+    end = len(a) - 1
+    while start < end:
+        mid = start + (end - start) // 2
+        if a[mid] == target:
+            return mid
+        elif a[mid] > target:
+            end = mid - 1
+        else:
+            start = mid + 1
+    if a[start] == target: return start
+    return 'not found'
+
 if __name__ == '__main__':
-    a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    a = [1]
     target = 4
-    print(binSearch(a, target))
+    print(binSearch_variant(a, target))
