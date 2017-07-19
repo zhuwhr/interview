@@ -1,7 +1,14 @@
-<<<<<<< HEAD
 # interview
-interview preparation
-=======
-# snippets
-Code for fun
->>>>>>> snippets/master
+## algorithm
+
+## OO design
+
+
+## system design 
+## networks
+
+
+## operating systmes
+
+
+
