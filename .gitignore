@@ -104,4 +104,4 @@ ENV/
 __pycache__
 .idea
 .vscode
-/gigo[0-9]?.py/
+gigo[0-9]?.py
